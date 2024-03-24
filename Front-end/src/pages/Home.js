@@ -37,7 +37,7 @@ function Home() {
       }).then(res => res.json())
       .then(result => {
         const updatedData = data.map(item => {
-          if (item._id == result._id) {
+          if (item._id ===result._id) {
             return result
           }
           else {
@@ -63,7 +63,7 @@ function Home() {
       }).then(res => res.json())
       .then(result => {
         const updatedData = data.map(item => {
-          if (item._id == result._id) {
+          if (item._id === result._id) {
             return result
           }
           else {
@@ -89,7 +89,7 @@ function Home() {
       }).then(res => res.json())
       .then(result => {
         const updatedData = data.map(item => {
-          if (item._id == result._id) {
+          if (item._id === result._id) {
             return result
           }
           else {
@@ -125,92 +125,80 @@ function Home() {
   };
   
 
-
-
   return (
     <div className='home'>
-      {data.map((item) => (
-        <div className='card' key={item._id}>
-          <div className='home-card'>
-            <h5><Link to={item.PostedBy._id!==state._id?
-            "/profile/"+item.PostedBy._id:"/profile"}>
-              {item.PostedBy.username}</Link>
-             {item.PostedBy._id==state._id &&
-            <i
+     {data.map((item) => (
+  <div className='card' key={item._id}>
+    <div className='home-card'>
+      <h5>
+        <Link to={item.PostedBy && item.PostedBy._id !== state._id ? "/profile/" + item.PostedBy._id : "/profile"}>
+          {item.PostedBy && item.PostedBy.username}
+        </Link>
+        {item.PostedBy && item.PostedBy._id === state._id &&
+          <i
             className='material-icons'
-            style={{ color: 'rgb(255, 37, 146)', float:"right"}} onClick={()=>deletePost(item._id)} >
-                      delete_forever
-                    </i>
-                    }
-            </h5>
+            style={{ color: 'rgb(255, 37, 146)', float: "right" }}
+            onClick={() => deletePost(item._id)}>
+            delete_forever
+          </i>
+        }
+      </h5>
+      <div className='card-image'>
+        <img src={item.imageUrl} alt='Post' />
+      </div>
+      <div className='card-content'>
+        {item.likes.includes(state._id) ?
+          (
+            <>
+              <i
+                className='material-icons'
+                style={{ color: 'rgb(255, 37, 146)' }} >
+                favorite_border
+              </i>
+              <i
+                className='material-icons'
+                onClick={() => unlikePost(item._id)}
+                style={{ color: 'rgb(255, 37, 146)' }} >
+                thumb_down
+              </i>
+            </>
+          ) : (
+            <>
+              <i
+                className='material-icons'
+                onClick={() => likePost(item._id)}
+                style={{ color: 'rgb(255, 37, 146)' }} >
+                thumb_up
+              </i>
+              <i
+                className='material-icons'
+                style={{ color: 'rgb(255, 37, 146)' }} >
+                favorite
+              </i>
+            </>
+          )}
+        <h6>{item.likes.length} likes</h6>
+        <h6>{item.caption}</h6>
+        {item.comments.map(record =>
+          record.PostedBy && (
+            <h6 key={record._id}><span style={{ fontWeight: "500" }}>
+              {record.PostedBy.username}:
+            </span>
+              {record.text}
+            </h6>
+          )
+        )}
+        <form onSubmit={(e) => {
+          e.preventDefault()
+          makeComment(e.target[0].value, item._id)
+        }}>
+          <input type='text' placeholder='Add a comment' />
+        </form>
+      </div>
+    </div>
+  </div>
+))}
 
-            <div className='card-image'>
-              <img src={item.imageUrl} alt='Post' />
-            </div>
-            <div className='card-content'>
-
-
-              {item.likes.includes(state._id) ?
-                (
-                  <>
-                    <i
-                      className='material-icons'
-                      style={{ color: 'rgb(255, 37, 146)' }} >
-                      favorite_border
-                    </i>
-                    <i
-                      className='material-icons'
-                      onClick={() => unlikePost(item._id)}
-                      style={{ color: 'rgb(255, 37, 146)' }} >
-                      thumb_down
-                    </i>
-
-
-                  </>
-                ) : (
-                  <>
-                    <i
-                      className='material-icons'
-                      onClick={() => likePost(item._id)}
-                      style={{ color: 'rgb(255, 37, 146)' }} >
-                      thumb_up
-                    </i>
-
-                    <i
-                      className='material-icons'
-                      style={{ color: 'rgb(255, 37, 146)' }} >
-                      favorite
-                    </i>
-                  </>
-                )}
-
-              <h6>{item.likes.length} likes</h6>
-              <h6>{item.caption}</h6>
-
-              {
-                item.comments.map(record=>
-                  {
-                    return(
-                      <h6 ><span style={{fontWeight:"500"}}>
-                        {record.PostedBy.username}: 
-                        </span>
-                         {record.text}
-                      </h6>
-                    )
-                  })
-              }
-
-              <form onSubmit={(e) => {
-                e.preventDefault()
-                makeComment(e.target[0].value, item._id)
-              }}>
-
-                <input type='text' placeholder='Add a comment' />
-              </form>
-            </div>
-          </div>
-        </div>
-      ))}
     </div>
   );
 }
