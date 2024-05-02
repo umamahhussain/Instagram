@@ -59,6 +59,9 @@ const Profile = () => {
   }
 
 
+
+
+
   const unfollowUser = () => {
     fetch('/unfollow', {
       method: "put",
@@ -90,6 +93,9 @@ const Profile = () => {
       })
     setshowFollow(true)
   }
+
+
+
 
 
   return (
@@ -134,7 +140,7 @@ const Profile = () => {
             <div className="gallery" style={{backgroundColor:'whitesmoke'}}>
               {userProfile.posts.map(item => {
                 return (
-                  <img className='item' width={"25%"} src={item.imageUrl} alt="prof" />
+                  <img className='item' width={"20%"} src={item.imageUrl} alt="prof" style={{padding:'15px'}}/>
                 )
               })}
             </div>
