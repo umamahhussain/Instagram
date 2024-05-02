@@ -21,22 +21,26 @@ const NavBar = () => {
     if (state) {
       return[
       <li>
-        <Link to="/profile">Profile</Link>
+        <Link to="/profile" style={{color: "midnightblue",fontWeight:'450'}}>Profile</Link>
       </li>,
        <li>
-       <Link to="/createpost">Create Post</Link>
+       <Link to="/createpost" style={{color: "midnightblue",fontWeight:'450'}}>Create Post</Link>
      </li>,
        <li>
-       <Link to="/followedposts">Following Posts</Link>
+       <Link to="/followedposts" style={{color: "midnightblue",fontWeight:'450'}}>Following Posts</Link>
      </li>,
      <li>
+     <Link to="/chatsupport" style={{color: "midnightblue",fontWeight:'450'}}>Chat Support</Link>
+   </li>,
+     
+     <li>
      <button Link to="/search" data-target="modal1" class="btn modal-trigger" 
-     style={{ backgroundColor: "rgb(255, 37, 146)", color: "white",margin:"4px" }}>Search
+     style={{ backgroundColor: "midnightblue", color: "white",margin:"4px" }}>Search
      </button>
      
    </li>,
       <li>
-        <button className="btn" style={{ backgroundColor: "rgb(255, 37, 146)", color: "white",margin:"4px" }}
+        <button className="btn" style={{ backgroundColor: "midnightblue", color: "white",margin:"4px" }}
            type="submit" name="action" 
            onClick={()=>
            {
@@ -52,13 +56,14 @@ const NavBar = () => {
     }
     else {
       return[
-        <li>
-        <Link to="/login">Login</Link>
+        <li >
+        <Link to="/login" style={{color: "midnightblue"}}  >Login</Link>
       </li>,
-
-      <li>
-        <Link to="/signup">Signup</Link>
+      
+      <li >
+        <Link to="/signup" style={{color: "midnightblue"}}>Signup</Link>
       </li>
+      
       ]
 
     }
@@ -88,7 +93,7 @@ const NavBar = () => {
     <div className="navbar">
       <nav>
         <div className="nav-wrapper white">
-          <Link to={state?"/":"/login"} className="brand-logo">Instagram</Link>
+          <Link to={state?"/":"/login"} className="brand-logo" style={{color:"midnightblue"}}>Instagram</Link>
           <ul className="right hide-on-med-and-down">
             {renderList()}
           </ul>
@@ -105,7 +110,7 @@ const NavBar = () => {
     <li
       key={item._id}
       className="collection-item"
-      style={{ color: "rgb(255, 37, 146)" }}
+      style={{color: "midnightblue" }}
     >
       <Link
         to={item._id !== state._id ? "/profile/" + item._id : '/'}
