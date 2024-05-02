@@ -27,42 +27,44 @@ function Profile() {
 
 
   return (
-    <div style={{ maxWidth: "550px", margin: "0px auto" }}>
+    <div style={{ maxWidth: "1000px", margin: "5px auto" }}>
       <div style={{
         display: "flex", justifyContent: "space-around",
         margin: "18px 0px",
-        borderBottom: "1px solid black"
+        borderBottom: "3px solid grey",
+            background: ' rgb(189, 195, 199)',
+            background: 'radial-gradient(circle, rgba(189, 195, 199, 1) 0%, rgba(44, 62, 80, 1) 100%)'
       }}>
         <div>
-          <img style={{ width: "160px", height: "160px", borderRadius: '80px' }}
+          <img style={{ width: "140px", height: "140px", borderRadius: "70px" ,padding:'10px' }}
             src="https://storage.ko-fi.com/cdn/useruploads/post/cb0018c0-22bd-4618-9d2f-ebf4208ab71c_fbphotoicon.png" alt="img" />
         </div>
         <div>
 
 
-          <h2 style={{ color: 'rgb(255, 37, 146)' }}>{state ? state.username : 'refreshing'}</h2>
+          <h4 style={{ color: 'midnightblue',fontWeight:'600' }}>{state ? state.username : 'refreshing'}</h4>
           <div style={{ display: 'flex', justifyContent: 'space-between', width: '108%' }}>
-            <h5 style={{ color: 'rgb(255, 37, 146)' }}>{posts.length} posts</h5>
+            <h6 style={{ color: 'midnightblue',fontWeight:'400' }}>{posts.length} posts</h6>
             {state && state.followers !== undefined ? (
-              <h5 style={{ color: 'rgb(255, 37, 146)' }}>{state.followers.length} followers</h5>
+              <h6 style={{ color: 'midnightblue',fontWeight:'400' }}>{state.followers.length} followers</h6>
             ) : (
-              <h5>Loading followers...</h5>
+              <h6>Loading followers...</h6>
             )}
             {state && state.following !== undefined ? (
-              <h5 style={{ color: 'rgb(255, 37, 146)' }}>{state.following.length} following</h5>
+              <h6 style={{ color: 'midnightblue',fontWeight:'400'}}>{state.following.length} following</h6>
             ) : (
-              <h5>Loading following...</h5>
+              <h6>Loading following...</h6>
             )}
           </div>
         </div>
       </div>
 
 
-      <div className='gallery'>
+      <div className='gallery' style={{backgroundColor:'whitesmoke'}}>
         {
           posts.map((item) => {
             return (
-              <img className='item' width={"30%"} src={item.imageUrl} alt="prof" />
+              <img className='item' width={"25%"} src={item.imageUrl} alt="prof" />
             )
           })
         }
