@@ -138,7 +138,7 @@ function Home() {
              {item.PostedBy._id==state._id &&
             <i
             className='material-icons'
-            style={{ color: 'rgb(255, 37, 146)', float:"right"}} onClick={()=>deletePost(item._id)} >
+            style={{ color: 'midnightblue', float:"right"}} onClick={()=>deletePost(item._id)} >
                       delete_forever
                     </i>
                     }
@@ -155,13 +155,13 @@ function Home() {
                   <>
                     <i
                       className='material-icons'
-                      style={{ color: 'rgb(255, 37, 146)' }} >
+                      style={{ color: 'midnightblue' }} >
                       favorite_border
                     </i>
                     <i
                       className='material-icons'
                       onClick={() => unlikePost(item._id)}
-                      style={{ color: 'rgb(255, 37, 146)' }} >
+                      style={{ color: 'midnightblue' }} >
                       thumb_down
                     </i>
 
@@ -172,13 +172,13 @@ function Home() {
                     <i
                       className='material-icons'
                       onClick={() => likePost(item._id)}
-                      style={{ color: 'rgb(255, 37, 146)' }} >
+                      style={{ color: 'midnightblue' }} >
                       thumb_up
                     </i>
 
                     <i
                       className='material-icons'
-                      style={{ color: 'rgb(255, 37, 146)' }} >
+                      style={{ color: 'midnightblue' }} >
                       favorite
                     </i>
                   </>
