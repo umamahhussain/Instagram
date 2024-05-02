@@ -22,10 +22,10 @@ const Signup = () => {
         }).then(res => res.json())
             .then(data => {
                 if (data.error) {
-                    M.toast({ html: data.error, classes: "rounded #ec407a pink lighten-1" })
+                    M.toast({ html: data.error, classes: "rounded N/A transparent" })
                 }
                 else {
-                    M.toast({ html: data.message, classes: "rounded #ec407a pink lighten-1" })
+                    M.toast({ html: data.message, classes: "rounded N/A transparent" })
                     navigate('/login');
                 }
             })
@@ -45,21 +45,17 @@ const Signup = () => {
                     </div>
 
                     <div className="inputfields" style={{ marginTop: "30px" }}>
-                       
-                        <input type="text" placeholder="email"
-                            value={email} onChange={e => setEmail(e.target.value)} style={{color:'midnightblue'}}/>
+    <input type="text" placeholder="email"
+        value={email} onChange={e => setEmail(e.target.value)} style={{ color: 'midnightblue', fontWeight: '600' }} />
 
+    <input type="text" placeholder="username"
+        value={username} onChange={e => setUsername(e.target.value)} style={{ color: 'midnightblue', fontWeight: '600' }}
+    />
 
-                        <input type="text" placeholder="username"
-                            value={username} onChange={e => setUsername(e.target.value)} style={{color:'midnightblue'}}
-                        />
+    <input type="password" placeholder="password"
+        value={password} onChange={e => setPassword(e.target.value)} style={{ color: 'midnightblue', fontWeight: '600' }} />
+</div>
 
-
-                        <input type="password" placeholder="password"
-                            value={password} onChange={e => setPassword(e.target.value)} style={{color:'midnightblue'}} />
-
-
-                    </div>
                     <button className="btn" style={{ backgroundColor: "midnightblue", color: "white", marginTop: "35px" }}
                         type="submit" name="action" onClick={() => PostData()}>Sign up</button>
                 </div>
