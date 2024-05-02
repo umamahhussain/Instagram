@@ -9,6 +9,7 @@ import Signup from './pages/Signup.js';
 import CreatePost from './pages/Createpost.js';
 import UserProfile from './pages/UserProfile.js';
 import FollowedPosts from './pages/followeduser.js'
+import ChatSupport from './pages/chatsupport.js';
 import {reducer,initialState} from '../src/reducer/UserReducer.js'
 
 export const UserContext=createContext()
@@ -43,6 +44,7 @@ const Routing=()=>
     <Route path="createpost" element={<CreatePost />} />
     <Route path="profile/:userid" element={<UserProfile />} />
     <Route path="profile" element={<Profile />} />
+    <Route path="chatsupport" element={<ChatSupport />} />
     <Route path="followedposts" element={<FollowedPosts />} />
   </Route>
 </Routes>
