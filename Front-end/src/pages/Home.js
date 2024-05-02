@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../App'
 import {Link} from 'react-router-dom'
+import { Cursor } from 'mongoose';
 
 function Home() {
   const [data, setData] = useState([]);
@@ -128,7 +129,7 @@ function Home() {
   return (
     <div className='home'>
      {data.map((item) => (
-  <div className='card' key={item._id}>
+  <div className='card' key={item._id} style={{ marginBottom: '20px' }}>
     <div className='home-card'>
       <h5>
         <Link to={item.PostedBy && item.PostedBy._id !== state._id ? "/profile/" + item.PostedBy._id : "/profile"}>
@@ -137,7 +138,7 @@ function Home() {
         {item.PostedBy && item.PostedBy._id === state._id &&
           <i
             className='material-icons'
-            style={{ color: 'rgb(255, 37, 146)', float: "right" }}
+            style={{ color: 'midnightblue', float: "right", cursor:'pointer' }}
             onClick={() => deletePost(item._id)}>
             delete_forever
           </i>
@@ -152,13 +153,13 @@ function Home() {
             <>
               <i
                 className='material-icons'
-                style={{ color: 'rgb(255, 37, 146)' }} >
+                style={{ color: 'midnightblue' }} >
                 favorite_border
               </i>
               <i
                 className='material-icons'
                 onClick={() => unlikePost(item._id)}
-                style={{ color: 'rgb(255, 37, 146)' }} >
+                style={{ color: 'midnightblue', cursor:'pointer' }} >
                 thumb_down
               </i>
             </>
@@ -167,12 +168,12 @@ function Home() {
               <i
                 className='material-icons'
                 onClick={() => likePost(item._id)}
-                style={{ color: 'rgb(255, 37, 146)' }} >
+                style={{ color: 'midnightblue', cursor:'pointer' }} >
                 thumb_up
               </i>
               <i
                 className='material-icons'
-                style={{ color: 'rgb(255, 37, 146)' }} >
+                style={{ color: 'midnightblue' }} >
                 favorite
               </i>
             </>
