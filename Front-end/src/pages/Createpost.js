@@ -26,9 +26,9 @@ const CreatePost = () => {
         const data = await response.json();
 
         if (data.error) {
-          M.toast({ html: data.error, classes: 'rounded #ec407a pink lighten-1' });
+          M.toast({ html: data.error, classes: 'rounded N/A transparent' });
         } else {
-          M.toast({ html: 'Post created successfully', classes: 'rounded #ec407a pink lighten-1' });
+          M.toast({ html: 'Post created successfully', classes: 'rounded N/A transparent' });
           navigate('/')
         }
       } catch (error) {
