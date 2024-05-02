@@ -26,23 +26,23 @@ const Login = () => {
             .then(data => {
                 console.log(data);
                 if (data.error) {
-                    M.toast({ html: data.error, classes: "rounded #ec407a pink lighten-1" });
+                    M.toast({ html: data.error, classes: "rounded N/A transparent" });
                 }
                 else if (data.user && data.user.username) {
                     // Ensure the user object and name property exist
                     localStorage.setItem("jwt", data.token);
                     localStorage.setItem("user", JSON.stringify(data.user));
                     dispatch({ type: "USER", payload: data.user });
-                    M.toast({ html: "Signed in", classes: "rounded #ec407a pink lighten-1" });
+                    M.toast({ html: "Signed in", classes: "rounded N/A transparent" });
                     navigate('/');
                 } else {
                     console.error("Invalid user data received from server:", data);
-                    M.toast({ html: "Invalid user data", classes: "rounded #ec407a pink lighten-1" });
+                    M.toast({ html: "Invalid user data", classes: "rounded N/A transparent" });
                 }
             })
             .catch(err => {
                 console.error("Error during login:", err);
-                M.toast({ html: "Error during login", classes: "rounded #ec407a pink lighten-1" });
+                M.toast({ html: "Error during login", classes: "rounded N/A transparent" });
             });
     };
 
@@ -59,11 +59,11 @@ const Login = () => {
 
                     <div className="inputfields" style={{ marginTop: "30px" }}>
                         <input type="text" placeholder="username"
-                            value={username} onChange={e => setUsername(e.target.value)} style={{ color: 'midnightblue' }}
+                            value={username} onChange={e => setUsername(e.target.value)} style={{ color: 'midnightblue',fontWeight: '600' }}
                         />
 
                         <input type="password" placeholder="password" value={password}
-                            onChange={e => setPassword(e.target.value)} style={{ color: 'midnightblue' }} />
+                            onChange={e => setPassword(e.target.value)} style={{ color: 'midnightblue',fontWeight: '600' }} />
 
                     </div>
 
