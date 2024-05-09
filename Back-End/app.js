@@ -5,7 +5,7 @@ const port=5000;
 app.use(express.json());
 
 // Connecting to the database, copy link from mongoose (connect w driver)
-mongoose.connect("mongodb+srv://(add username, password and connect to cluster)")
+mongoose.connect("mongodb+srv://umamahhussain:umamah@cluster0.erk21jo.mongodb.net/?retryWrites=true&w=majority")
 .then(() => console.log('Connected Successfully to DB'))
 .catch((err) => { console.error(err); })
 
